@@ -113,15 +113,7 @@ This project uses SQLite with temporary Kubernetes storage. Ticket data may be l
 
 The application is intended for local development and Kubernetes learning, not production use.
 
-## What I Learned
 
-- Building a Python web application
-- Creating Docker images
-- Writing Kubernetes YAML files
-- Deploying applications using kubectl
-- Using Kubernetes Services
-- Troubleshooting Pods and logs
-- Using Git and GitHub to manage code
 
 ## Author
 
