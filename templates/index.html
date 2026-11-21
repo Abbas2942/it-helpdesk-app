@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IT Help Desk</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+        button {
+            background: #1769aa;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .ticket {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>IT Help Desk</h1>
+
+    <div class="box">
+        <h2>Create Ticket</h2>
+
+        <form action="/add" method="POST">
+            <input name="server"
+                   placeholder="Server Name"
+                   required>
+
+            <input name="issue"
+                   placeholder="Issue Description"
+                   required>
+
+            <select name="priority">
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+            </select>
+
+            <button type="submit">
+                Create Ticket
+            </button>
+        </form>
+    </div>
+
+    <div class="box">
+        <h2>Recent Tickets</h2>
+
+        {% for ticket in tickets %}
+        <div class="ticket">
+            <strong>{{ ticket.server }}</strong>
+            <p>{{ ticket.issue }}</p>
+            <p>Priority: {{ ticket.priority }}</p>
+            <p>Status: {{ ticket.status }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
