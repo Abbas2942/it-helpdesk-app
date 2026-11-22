@@ -9,7 +9,7 @@ on:
 
 permissions:
   contents: read
-  pakeage: write
+  pakeages: write
 jobs:
   test:
     runs-on: ubuntu-latest
