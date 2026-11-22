@@ -43,3 +43,6 @@ jobs:
           print("Website health test passed!")
           PY
 
+      - name: Build Docker image
+        run: docker build -t it-helpdesk:ci .
+
