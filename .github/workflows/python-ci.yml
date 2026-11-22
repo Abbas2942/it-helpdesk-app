@@ -1,0 +1,45 @@
+
+name: IT Help Desk CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download code
+        uses: actions/checkout@v4
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Check Python code
+        run: python -m compileall -q app.py
+
+      - name: Test website health
+        run: |
+          python - <<'PY'
+          from app import app
+
+          client = app.test_client()
+          response = client.get("/health")
+
+          assert response.status_code == 200
+          print("Website health test passed!")
+          PY
+
