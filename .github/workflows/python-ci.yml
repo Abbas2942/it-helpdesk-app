@@ -9,7 +9,7 @@ on:
 
 permissions:
   contents: read
-  pakeages: write
+  packages: write
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -38,6 +38,11 @@ jobs:
 
           client = app.test_client()
           response = client.get("/health")
+          
+          assert response.status_code == 200
+          print("Website health test passed!")
+          PY
+
 
       - name: Login to GitHub Container Registry
         if: github.event_name == 'push'
